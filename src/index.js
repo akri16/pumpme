@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://20.124.190.25/build/";
+const BACKEND_URL = "https://pumpme.eastus.cloudapp.azure.com/build/";
 
 $(function(){
 
@@ -28,10 +28,11 @@ $(function(){
         fetch(BACKEND_URL + url).then(res => {
             setLoading(false);
             setStatus(res.ok);
-            return res.blob();
+            if (res.ok) {
+                return res.blob(); 
+            }
         }).then(blob => {
-            console.log(blob);
-            download(blob);
+            if (blob) download(blob);
         }).catch(error => {
             setLoading(false);
             setStatus(false);
