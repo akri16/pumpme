@@ -23,6 +23,15 @@ This is particularly useful for the judges in Hackathons. In Hackathons, judges 
 - I used Certbot to generate LetsEncrypt certificates that are served by Uvicorn
 - The backend runs a script that kicks off a set of tasks that build the apk.
 
+# Steps to setup
+- Create an Ubuntu VM
+- Install HTTPS Certificates on it using Certbot
+- Install Java JDK 8 and 11 using `sudo apt install openjdk-8-jdk openjdk-8-jre openjdk-11-jdk openjdk-11-jre`
+- Install Android SDK using https://developer.android.com/studio/command-line
+- Set ANDROID_HOME, ANDROID_SDK_ROOT, JAVA_HOME
+- Copy backend files onto your home directory
+- Run `uvicorn app.app:app --host 0.0.0.0 --port 443 --keyfile=./key.pem --certfile=./cert.pem`
+
 # Issues
 
 Some of the builds are failing because of:
